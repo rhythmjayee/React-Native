@@ -6,7 +6,7 @@ const Goal = ({goal, removeGoal}) => {
         style={styles.goalItem}
         key={goal.id}
         onPress={removeGoal.bind(this, goal.id)}>
-            <Text style={{color: 'white'}}>
+            <Text style={{color: 'white', fontWeight: 'bold'}}>
                 {goal.text}
             </Text>
         </TouchableOpacity>        

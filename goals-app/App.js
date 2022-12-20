@@ -5,7 +5,12 @@ import GoalsContainer from "./components/GoalsContainer";
 export default function App() {
   return (
     <View style={styles.container}>
-      <GoalsContainer/>
+      <View style={styles.nav}>
+        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>Goals App</Text>
+      </View>
+      <View style={{flex: 15}}>
+        <GoalsContainer/>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -14,7 +19,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    marginTop : 25
+    backgroundColor: "#bb9af4",
+    marginTop: 20
   },
+  nav: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#5c18cf',
+  }
 });

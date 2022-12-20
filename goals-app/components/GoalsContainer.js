@@ -26,7 +26,7 @@ const GoalsContainer = () => {
             <View>
                 <Button 
                 title='Add New Goal'
-                color="#935eed"
+                color="#5c18cf"
                 onPress={toggleModal}
                 />
             </View>
