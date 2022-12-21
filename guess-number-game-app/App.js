@@ -3,26 +3,27 @@ import { StyleSheet, ImageBackground, SafeAreaView, NativeModules, Platform } fr
 import { LinearGradient } from 'expo-linear-gradient';
 
 import StartGameScreen from './screens/StartGameScreen'
+import Colors from './constants/color';
 
 const { StatusBarManager } = NativeModules;
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <LinearGradient
-        colors={['#560641', '#bcb254']}
-        style={styles.background}>
-          <ImageBackground 
-          source={require('./assets/images/d2.jpeg')}
-          resizeMode="cover" 
-          style={styles.background}
-          imageStyle={styles.image}>
+    <LinearGradient
+      colors={[Colors.primary500, Colors.secondary200]}
+      style={styles.background}>
+        <ImageBackground 
+        source={require('./assets/images/d2.jpeg')}
+        resizeMode="cover" 
+        style={styles.background}
+        imageStyle={styles.image}>
+          <SafeAreaView style={styles.container}>
             <StartGameScreen/>
-          </ImageBackground>
-      </LinearGradient>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+          </SafeAreaView>
+        </ImageBackground>
+        <StatusBar style="auto" />
+    </LinearGradient>
   );
 }
 

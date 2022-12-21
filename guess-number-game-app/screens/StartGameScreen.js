@@ -2,6 +2,9 @@ import { useState } from "react";
 import { View, StyleSheet, TextInput, Alert } from "react-native"
 import PrimaryButton from "../components/PrimaryButton"
 
+import Colors from "../constants/color";
+import Title from "../components/Title";
+
 const StartGameScreen = () => {
     const [number, setNumber] = useState('');
 
@@ -10,7 +13,6 @@ const StartGameScreen = () => {
     }
     const confirmNumberHandler = () => {
         const enteredNumber = Number(number)
-        console.log(enteredNumber)
         if(isNaN(enteredNumber) || enteredNumber <= 0 || enteredNumber > 99) {
             Alert.alert(
                 'Invalid Number!',
@@ -19,7 +21,7 @@ const StartGameScreen = () => {
                     text: "Ok",
                     onPress: resetNumberHandler,
                     style: "destructive"
-                  },]
+                },]
             )
         }
     }
@@ -28,14 +30,20 @@ const StartGameScreen = () => {
     }
     return (
     <View style={styles.container}>
+        <Title vstyle={styles.title}>Guess the Number</Title>
         <View style={styles.rootContainer}>
             <View style={styles.inputContainer}>
-                <TextInput 
-                style={styles.input}
-                maxLength={2}
-                keyboardType="number-pad"
-                value={number}
-                onChangeText={numberHandler}/>
+                <View>
+                    <Title vstyle={styles.headingV} tstyle={styles.heading}>Enter the Number</Title>
+                </View>
+                <View>
+                    <TextInput 
+                    style={styles.input}
+                    maxLength={2}
+                    keyboardType="number-pad"
+                    value={number}
+                    onChangeText={numberHandler}/>
+                </View>
             </View>
             <View style={styles.buttonContainer}>
                 <View>
@@ -62,25 +70,39 @@ const styles = StyleSheet.create({
     rootContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#51003b',
-        padding: 75,
+        backgroundColor: Colors.primary500,
+        padding: 60,
         borderRadius: 15,
     },
     buttonContainer: {
         flexDirection: 'row'
     },
     inputContainer: {
-        padding: 10
+        padding: 10,
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
     },
     input: {
-        borderBottomColor: '#f7e200',
+        borderBottomColor: Colors.secondary500,
         borderBottomWidth: 3,
         textAlign: 'center',
         padding: 5,
         fontSize: 30,
         fontWeight: 'bold',
-        color: '#f7e200',
+        color: Colors.secondary500,
         width: 50,
+    },
+    title: {
+        marginBottom: 30,
+    },
+    heading: {
+        fontSize: 15
+    },
+    headingV: {
+        marginBottom: 20,
+        padding: 0,
+        borderWidth: 0,
+        borderBottomWidth: 3
     }
 })
 
