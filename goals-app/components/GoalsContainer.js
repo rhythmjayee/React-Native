@@ -16,7 +16,7 @@ const GoalsContainer = () => {
     const toggleModal = () => {
         setModalVisible((modal) => !modal)
     }
-    function removeGoal (goalId) {
+    const removeGoal = (goalId) => {
         setGoals((prevGoals) => {
             return prevGoals.filter((goal) => goal.id != goalId)
         })
