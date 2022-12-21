@@ -27,35 +27,44 @@ const StartGameScreen = () => {
         setNumber(enteredNumber)
     }
     return (
-    <View style={styles.rootContainer}>
-        <View style={styles.inputContainer}>
-            <TextInput 
-            style={styles.input}
-            maxLength={2}
-            keyboardType="number-pad"
-            value={number}
-            onChangeText={numberHandler}/>
-        </View>
-        <View style={styles.buttonContainer}>
-            <View>
-                <PrimaryButton 
-                title="Reset"
-                onPress={resetNumberHandler}/>
+    <View style={styles.container}>
+        <View style={styles.rootContainer}>
+            <View style={styles.inputContainer}>
+                <TextInput 
+                style={styles.input}
+                maxLength={2}
+                keyboardType="number-pad"
+                value={number}
+                onChangeText={numberHandler}/>
             </View>
-            <View>
-                <PrimaryButton 
-                title="Confirm"
-                onPress={confirmNumberHandler}/>
+            <View style={styles.buttonContainer}>
+                <View>
+                    <PrimaryButton 
+                    title="Reset"
+                    onPress={resetNumberHandler}/>
+                </View>
+                <View>
+                    <PrimaryButton 
+                    title="Confirm"
+                    onPress={confirmNumberHandler}/>
+                </View>
             </View>
         </View>
     </View>
     )
 }
 const styles = StyleSheet.create({
+    container: {
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     rootContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#7f306b'
+        backgroundColor: '#51003b',
+        padding: 75,
+        borderRadius: 15,
     },
     buttonContainer: {
         flexDirection: 'row'

@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, SafeAreaView, NativeModules, Platform } from "react-native";
+import { StyleSheet, ImageBackground, SafeAreaView, NativeModules, Platform } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import StartGameScreen from './screens/StartGameScreen'
 
@@ -9,7 +10,17 @@ const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <StartGameScreen/>
+      <LinearGradient
+        colors={['#560641', '#bcb254']}
+        style={styles.background}>
+          <ImageBackground 
+          source={require('./assets/images/d2.jpeg')}
+          resizeMode="cover" 
+          style={styles.background}
+          imageStyle={styles.image}>
+            <StartGameScreen/>
+          </ImageBackground>
+      </LinearGradient>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -18,7 +29,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     marginTop: STATUSBAR_HEIGHT
   },
+  background: {
+    flex: 1
+  },
+  image: {
+    flex: 1,
+    opacity: 0.15
+  }
 });
