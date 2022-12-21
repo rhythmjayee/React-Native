@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { TextInput, View, Modal, StyleSheet, Button, Pressable, Text } from "react-native";
+import { TextInput, View, Modal, StyleSheet, Button, Image } from "react-native";
 
 const InputModal = ({modalVisible, toggleModal, addGoals}) => {
     const [goal, setGoal] = useState("");
@@ -23,6 +23,11 @@ const InputModal = ({modalVisible, toggleModal, addGoals}) => {
             transparent={false}
             visible={modalVisible}>
                 <View style={styles.inputContainer}>
+                    <View style={styles.logo}>
+                        <Image
+                        source={require('../assets/images/goal.png')}
+                        />
+                    </View>
                     <View>
                         <TextInput
                         style={styles.input}
@@ -66,7 +71,8 @@ const styles = StyleSheet.create({
     },
     input: {
         padding: 10,
-        width: 200
+        width: 200,
+        textAlign: 'center'
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -77,6 +83,12 @@ const styles = StyleSheet.create({
         justifyContent : 'center',
         alignItems: 'center',
         padding: 7
+    },
+    logo: {
+        width: 100,
+        height: 100,
+        marginBottom: 20,
+        backgroundColor: '#c7adf4',
     }
 });
 
