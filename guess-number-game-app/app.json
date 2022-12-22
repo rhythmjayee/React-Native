@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "guess-number-game-app",
-    "slug": "guess-number-game-app",
+    "slug": "guessgame",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.rythm011.guessgame"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e219c64f-45ae-48af-924d-5fc5b2dd6db1"
+      }
+    },
+    "owner": "rythm011"
   }
 }
