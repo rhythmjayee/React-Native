@@ -4,6 +4,7 @@ import PrimaryButton from "../components/PrimaryButton"
 
 import Colors from "../constants/color";
 import Title from "../components/Title";
+import Card from "../components/Card";
 
 const StartGameScreen = ({addUserSelectedNumber}) => {
     const [number, setNumber] = useState('');
@@ -33,7 +34,7 @@ const StartGameScreen = ({addUserSelectedNumber}) => {
     return (
     <View style={styles.container}>
         <Title vstyle={styles.titleV} tstyle={styles.title}>Guess the Number</Title>
-        <View style={styles.rootContainer}>
+        <Card>
             <View style={styles.inputContainer}>
                 <View>
                     <Title vstyle={styles.headingV} tstyle={styles.heading}>Enter the Number</Title>
@@ -59,7 +60,7 @@ const StartGameScreen = ({addUserSelectedNumber}) => {
                     onPress={confirmNumberHandler}/>
                 </View>
             </View>
-        </View>
+        </Card>
     </View>
     )
 }

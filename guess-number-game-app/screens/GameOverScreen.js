@@ -17,12 +17,12 @@ const GameOverScreen = ({userNumber, rounds, resetGame}) => {
         </View>
         <View>
             <Text style={styles.text1}>
-                Number chosen by user is <Text style={styles.text2}>X</Text> and Opponent took <Text style={styles.text2}>Y</Text> rounds to get the Number.
+                Number chosen by user is <Text style={styles.text2}>{userNumber}</Text> and Opponent took <Text style={styles.text2}>{rounds}</Text> rounds to get the Number.
             </Text>
         </View>
         <View>
             <PrimaryButton 
-            title='Restart Game'
+            title='Play Again !!'
             onPress={resetGame}/>
         </View>
     </View>

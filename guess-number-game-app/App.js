@@ -15,8 +15,9 @@ const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [gameOver, setGameOver] = useState(true);
-  const [userNumber, setUserNumber] = useState(1);
+  const [gameOver, setGameOver] = useState(false);
+  const [userNumber, setUserNumber] = useState(null);
+  const [rounds, setRounds] = useState(0);
 
   const [fontsLoaded] = useFonts({
     'Amatic': require('./assets/fonts/am-r.ttf'),
@@ -38,8 +39,9 @@ export default function App() {
     console.log(number)
     setUserNumber(number)
   }
-  const setUserGameOver = () => {
+  const setUserGameOver = (rounds) => {
     setGameOver(true)
+    setRounds(rounds)
   }
   const resetGame = () => {
     setGameOver(false)
@@ -48,9 +50,9 @@ export default function App() {
 
   let screen = <StartGameScreen addUserSelectedNumber={addUserSelectedNumber}/>
   if(gameOver && userNumber) {
-    screen = <GameOverScreen resetGame={resetGame}/>
+    screen = <GameOverScreen userNumber={userNumber} rounds={rounds} resetGame={resetGame}/>
   }else if(userNumber) {
-    screen = <GameScreen/>
+    screen = <GameScreen userNumber={userNumber} setUserGameOver={setUserGameOver} resetGame={resetGame}/>
   }
 
   return (
