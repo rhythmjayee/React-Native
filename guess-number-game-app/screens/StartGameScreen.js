@@ -5,7 +5,7 @@ import PrimaryButton from "../components/PrimaryButton"
 import Colors from "../constants/color";
 import Title from "../components/Title";
 
-const StartGameScreen = () => {
+const StartGameScreen = ({addUserSelectedNumber}) => {
     const [number, setNumber] = useState('');
 
     const resetNumberHandler = () => {
@@ -23,7 +23,9 @@ const StartGameScreen = () => {
                     style: "destructive"
                 },]
             )
+            return
         }
+        addUserSelectedNumber(enteredNumber)
     }
     const numberHandler = (enteredNumber) => {
         setNumber(enteredNumber)
