@@ -17,7 +17,7 @@ const GameOverScreen = ({userNumber, rounds, resetGame}) => {
         </View>
         <View>
             <Text style={styles.text1}>
-                Number chosen by user is <Text style={styles.text2}>X</Text> and Oponent took <Text style={styles.text2}>Y</Text> rounds to get the Number.
+                Number chosen by user is <Text style={styles.text2}>X</Text> and Opponent took <Text style={styles.text2}>Y</Text> rounds to get the Number.
             </Text>
         </View>
         <View>
@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
     },
     text1: {
         color: Colors.primary500,
-        fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'Black-Jack' || 'Amatic-Bold',
+        fontSize: 25
     },
     text2: {
         color: Colors.secondary500

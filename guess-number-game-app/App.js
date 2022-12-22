@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import { useState, useCallback } from 'react';
+import { useFonts } from 'expo-font';
 import { StyleSheet, ImageBackground, SafeAreaView, NativeModules, Platform } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-
 import StartGameScreen from './screens/StartGameScreen'
 import Colors from './constants/color';
 import GameOverScreen from './screens/GameOverScreen';
@@ -11,9 +12,27 @@ import GameScreen from './screens/GameScreen';
 const { StatusBarManager } = NativeModules;
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
   const [gameOver, setGameOver] = useState(true);
   const [userNumber, setUserNumber] = useState(1);
+
+  const [fontsLoaded] = useFonts({
+    'Amatic': require('./assets/fonts/am-r.ttf'),
+    'Amatic-Bold': require('./assets/fonts/am-b.ttf'),
+    'Black-Jack' : require('./assets/fonts/blackjack.otf')
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const addUserSelectedNumber = (number) => {
     console.log(number)
@@ -36,6 +55,7 @@ export default function App() {
 
   return (
     <LinearGradient
+    onLayout={onLayoutRootView}
       colors={[Colors.primary500, Colors.secondary200]}
       style={styles.background}>
         <ImageBackground 

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: Colors.secondary500,
         fontSize: 24,
-        fontWeight: 'bold'
+        fontFamily: 'Black-Jack' || 'Amatic-Bold' || 'Amatic' || 'cursive'
     }
 })
 export default Title

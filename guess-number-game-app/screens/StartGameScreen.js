@@ -32,7 +32,7 @@ const StartGameScreen = ({addUserSelectedNumber}) => {
     }
     return (
     <View style={styles.container}>
-        <Title vstyle={styles.title}>Guess the Number</Title>
+        <Title vstyle={styles.titleV} tstyle={styles.title}>Guess the Number</Title>
         <View style={styles.rootContainer}>
             <View style={styles.inputContainer}>
                 <View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.primary500,
-        padding: 60,
+        padding: 30,
         borderRadius: 15,
     },
     buttonContainer: {
@@ -90,15 +90,20 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         padding: 5,
         fontSize: 30,
-        fontWeight: 'bold',
+        //bold will not work in android -> font will not work
+        // fontWeight: 'bold',
+        fontFamily: 'Black-Jack' || 'Amatic-Bold',
         color: Colors.secondary500,
         width: 50,
     },
-    title: {
+    titleV: {
         marginBottom: 30,
     },
+    title: {
+        fontSize: 30
+    },
     heading: {
-        fontSize: 15
+        fontSize: 35
     },
     headingV: {
         marginBottom: 20,

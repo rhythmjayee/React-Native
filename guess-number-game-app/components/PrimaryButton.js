@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
     textContainer: {
         textAlign: 'center',
         color: Colors.secondary500,
-        fontWeight: 'bold',
-        padding: 8
+        padding: 8,
+        fontFamily: 'Black-Jack' || 'Amatic-Bold' || 'cursive',
+        fontSize: 30
     },
     pressed: {
         opacity: 0.75,
