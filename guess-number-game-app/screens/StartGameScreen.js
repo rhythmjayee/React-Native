@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
         textAlign: 'center',
         padding: 5,
-        fontSize: 30,
+        fontSize: 20,
         //bold will not work in android -> font will not work
         // fontWeight: 'bold',
         fontFamily: 'Black-Jack' || 'Amatic-Bold',
@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     title: {
-        fontSize: 30
+        fontSize: 35
     },
     heading: {
-        fontSize: 35
+        fontSize: 25
     },
     headingV: {
         marginBottom: 20,

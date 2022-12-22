@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         color: Colors.secondary500,
         padding: 8,
         fontFamily: 'Black-Jack' || 'Amatic-Bold' || 'cursive',
-        fontSize: 30
+        fontSize: 25
     },
     pressed: {
         opacity: 0.75,
