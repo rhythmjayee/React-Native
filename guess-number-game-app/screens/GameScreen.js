@@ -6,23 +6,32 @@ import Title from "../components/Title"
 
 import Colors from "../constants/color"
 
+let lower = 1;
+let higher = 100;
+let initalNumber = -1;
+
 function generateRandomBetween(min, max, exclude) {
     const rndNum = Math.floor(Math.random() * (max - min)) + min;
-
+    console.log(min, max, rndNum)
     if (rndNum === exclude) {
         return generateRandomBetween(min, max, exclude);
     } else {
         return rndNum;
     }
 }
-let lower = 1;
-let higher = 100;
+
 const GameScreen = ({userNumber, setUserGameOver, resetGame}) => {
-    const initalNumber = generateRandomBetween(1, 100, userNumber);
+    const [currentGuess, setCurrentGuess] = useState(null);
 
-    const [currentGuess, setCurrentGuess] = useState(initalNumber);
+    const [guesses, setGuesses] = useState([]);
 
-    const [guesses, setGuesses] = useState([initalNumber]);
+    useEffect(() => {
+        lower = 1;
+        higher = 100;
+        initalNumber = generateRandomBetween(1, 100, userNumber);
+        setCurrentGuess(initalNumber)
+        setGuesses([initalNumber])
+    }, []);
 
     useEffect(() => {
         if(currentGuess === userNumber) {
@@ -45,11 +54,13 @@ const GameScreen = ({userNumber, setUserGameOver, resetGame}) => {
         }
 
         if(direction === 'lower') {
+            // console.log(direction, lower, higher)
             higher = currentGuess
         }else if(direction === 'higher') {
+            // console.log(direction, lower, higher)
             lower = currentGuess + 1
         }
-        console.log(direction, lower, higher)
+        // console.log(direction, lower, higher,'end...')
         let guess = generateRandomBetween(lower, higher, currentGuess)
         setCurrentGuess(guess)
         setGuesses((preGuesses) => {
