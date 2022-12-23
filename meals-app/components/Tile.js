@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, Pressable } from "react-native"
 
-const Tile = ({title, id, color }) => {
+const Tile = ({title, id, color, onPress }) => {
     return (
         <View style={[styles.container, {backgroundColor: color}]}>
             <Pressable 
             android_ripple={{color: '#ccc'}}
-            
+            onPress={onPress}
             style={({pressed}) => pressed ? [styles.flexConatiner, styles.pressed] : styles.flexConatiner}
             >
                 <Text style={styles.text}>{title}</Text>
