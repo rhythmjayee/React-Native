@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, SafeAreaView, NativeModules, Platform } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -18,9 +19,43 @@ const Stack = createNativeStackNavigator();
 const DrawerNavigation = () => {
     const Drawer = createDrawerNavigator();
     return (
-    <Drawer.Navigator>
-            <Drawer.Screen name="MealsCategories" component={CategoriesScreen} />
-            <Drawer.Screen name="favourite" component={FavouriteScreen} />
+    <Drawer.Navigator 
+    screenOptions={{
+        headerTintColor: '#ffffff',
+        headerTitleStyle: {
+            fontSize: 15,
+        },
+        headerStyle: { backgroundColor: '#35120c' },
+        headerTitleAlign: 'center',
+        sceneContainerStyle: {backgroundColor: '#785353'},
+        drawerStyle: {
+            backgroundColor: '#785353'
+        },
+        drawerContentStyle: {},
+        drawerActiveBackgroundColor: '#4e2222',
+        drawerActiveTintColor:  'white',
+        drawerInactiveTintColor: '#3c1414',
+
+    }}>
+            <Drawer.Screen 
+            name="MealsCategories" 
+            component={CategoriesScreen} 
+            options={
+                {
+                    title: 'All Categories',
+                    drawerIcon: () => <Ionicons name='fast-food' size={30} color="white" />
+                }
+            }/>
+            <Drawer.Screen 
+            name="favourite" 
+            component={FavouriteScreen}
+            options={
+                {
+                    title: 'Favourites',
+                    drawerIcon: () => <Ionicons name='star' size={30} color="white" />
+                }
+            }
+            />
     </Drawer.Navigator>
     )
 }
@@ -31,7 +66,7 @@ export default function App() {
             <SafeAreaView style={styles.safe}>
                 <NavigationContainer>
                     <Stack.Navigator 
-                    initialRouteName="MealsCategories"
+                    initialRouteName="Drawer"
                     screenOptions={{
                         headerTintColor: '#ffffff',
                         headerTitleStyle: {
@@ -42,7 +77,9 @@ export default function App() {
                         headerBackTitle: '',
                         contentStyle: {backgroundColor: '#785353'}
                     }}>
-                        <Stack.Screen name="Drawer" component={DrawerNavigation}/>
+                        <Stack.Screen name="Drawer" component={DrawerNavigation} options={{
+                            headerShown: false
+                        }}/>
                         <Stack.Screen name="Dishes" component={DishesScreen} />
                         <Stack.Screen name="DishDetails" component={DishDetailScreen} />
                 </Stack.Navigator>
