@@ -1,20 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, NativeModules, Platform } from 'react-native';
+
+import CategoriesScreen from './screens/CategoriesScreen';
+
+const { StatusBarManager } = NativeModules;
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+    <SafeAreaView style={styles.container}>
+        <CategoriesScreen/>
+        <StatusBar style="auto" />
+    </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        marginTop: STATUSBAR_HEIGHT,
+        padding: 10
+    },
 });
