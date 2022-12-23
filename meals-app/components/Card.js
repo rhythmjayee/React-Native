@@ -1,9 +1,10 @@
 import { View, Image, Text, StyleSheet, Pressable } from "react-native"
 
-const Card = ({mealName, mealImage, mealPointers={}}) => {
+const Card = ({mealName, mealImage, mealPointers={}, onPress}) => {
     return (
     <View style={styles.container}>
         <Pressable 
+            onPress={onPress}
             android_ripple={{color: '#ccc'}}
             style={({pressed}) => pressed ? [styles.flexConatiner, styles.pressed] : styles.flexConatiner}
             >
@@ -15,7 +16,7 @@ const Card = ({mealName, mealImage, mealPointers={}}) => {
                 </View>
                 <View style={styles.textConatiner}>
                     <View>
-                        <Text style={styles.text}>{mealName.toUpperCase()}</Text>
+                        <Text style={[styles.text, {fontWeight: 'bold'}]}>{mealName.toUpperCase()}</Text>
                     </View>
                     <View style={styles.pointersContainer}>
                         <View>
@@ -68,7 +69,6 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         color: 'white',
-        fontWeight: 'bold'
     },
     pressed: {
         opacity: 0.5,

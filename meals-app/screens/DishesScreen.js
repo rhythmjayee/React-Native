@@ -7,9 +7,11 @@ import { MEALS } from "../data/dummyData"
 const DishesScreen = ({route, navigation}) => {
     const { cId, cTitle } = route.params;
     const meals = MEALS.filter((meal) => meal.categoryIds.indexOf(cId) !== -1)
+
     useLayoutEffect(() => {
         navigation.setOptions({ title: cTitle })
     }, [cId, cTitle]);
+
     return (
     <View style={styles.container}>
         <FlatList
@@ -22,6 +24,7 @@ const DishesScreen = ({route, navigation}) => {
                     duration: item.duration
                 }
                 return <Card
+                onPress={() => navigation.navigate('DishDetails', {mId: item.id, mealDeatils: item})}
                 mealName={item.title}
                 mealImage={item.imageUrl}
                 mealPointers={mealPointers}
