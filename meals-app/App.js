@@ -1,17 +1,29 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, SafeAreaView, NativeModules, Platform } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import CategoriesScreen from './screens/CategoriesScreen';
 import DishesScreen from './screens/DishesScreen';
 import DishDetailScreen from './screens/DishDetailScreen';
+import FavouriteScreen from './screens/FavouriteScreen';
 
 const { StatusBarManager } = NativeModules;
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
 
 const Stack = createNativeStackNavigator();
+
+const DrawerNavigation = () => {
+    const Drawer = createDrawerNavigator();
+    return (
+    <Drawer.Navigator>
+            <Drawer.Screen name="MealsCategories" component={CategoriesScreen} />
+            <Drawer.Screen name="favourite" component={FavouriteScreen} />
+    </Drawer.Navigator>
+    )
+}
 
 export default function App() {
     return (
@@ -30,7 +42,7 @@ export default function App() {
                         headerBackTitle: '',
                         contentStyle: {backgroundColor: '#785353'}
                     }}>
-                        <Stack.Screen name="MealsCategories" component={CategoriesScreen} options={{title: 'All Categories'}} />
+                        <Stack.Screen name="Drawer" component={DrawerNavigation}/>
                         <Stack.Screen name="Dishes" component={DishesScreen} />
                         <Stack.Screen name="DishDetails" component={DishDetailScreen} />
                 </Stack.Navigator>
