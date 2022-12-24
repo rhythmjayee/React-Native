@@ -10,6 +10,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import DishesScreen from './screens/DishesScreen';
 import DishDetailScreen from './screens/DishDetailScreen';
 import FavouriteScreen from './screens/FavouriteScreen';
+import { FavouriteContextComponent } from './store/context/favourite-contex';
 
 const { StatusBarManager } = NativeModules;
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 0 : StatusBarManager.HEIGHT;
@@ -64,26 +65,28 @@ export default function App() {
     return (
         <View style={styles.container}>
             <SafeAreaView style={styles.safe}>
-                <NavigationContainer>
-                    <Stack.Navigator 
-                    initialRouteName="Drawer"
-                    screenOptions={{
-                        headerTintColor: '#ffffff',
-                        headerTitleStyle: {
-                            fontSize: 15,
-                        },
-                        headerStyle: { backgroundColor: '#35120c' },
-                        headerTitleAlign: 'center',
-                        headerBackTitle: '',
-                        contentStyle: {backgroundColor: '#785353'}
-                    }}>
-                        <Stack.Screen name="Drawer" component={DrawerNavigation} options={{
-                            headerShown: false
-                        }}/>
-                        <Stack.Screen name="Dishes" component={DishesScreen} />
-                        <Stack.Screen name="DishDetails" component={DishDetailScreen} />
-                </Stack.Navigator>
-                </NavigationContainer>
+                <FavouriteContextComponent>
+                    <NavigationContainer>
+                        <Stack.Navigator 
+                        initialRouteName="Drawer"
+                        screenOptions={{
+                            headerTintColor: '#ffffff',
+                            headerTitleStyle: {
+                                fontSize: 15,
+                            },
+                            headerStyle: { backgroundColor: '#35120c' },
+                            headerTitleAlign: 'center',
+                            headerBackTitle: '',
+                            contentStyle: {backgroundColor: '#785353'}
+                        }}>
+                            <Stack.Screen name="Drawer" component={DrawerNavigation} options={{
+                                headerShown: false
+                            }}/>
+                            <Stack.Screen name="Dishes" component={DishesScreen} />
+                            <Stack.Screen name="DishDetails" component={DishDetailScreen} />
+                    </Stack.Navigator>
+                    </NavigationContainer>
+                </FavouriteContextComponent>
             </SafeAreaView>
             <StatusBar style="light" />
         </View>
