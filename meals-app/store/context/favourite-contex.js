@@ -10,7 +10,6 @@ export const FavouriteContextComponent = ({ children }) => {
     const [favouriteMeals, setfavouriteMeals] = useState([]);
 
     const addToFavouriteMeal = (id) => {
-        console.log(id)
         setfavouriteMeals((preMeals) => [...preMeals, id])
     }
     const removeFromFavouriteMeals = (id) => {
