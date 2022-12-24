@@ -1,6 +1,6 @@
 import {  useLayoutEffect } from "react"
 import { View, FlatList, StyleSheet } from "react-native"
-import Card from "../components/Card"
+import MealList from "../components/MealList"
 
 import { MEALS } from "../data/dummyData"
 
@@ -13,34 +13,12 @@ const DishesScreen = ({route, navigation}) => {
     }, [cId, cTitle]);
 
     return (
-    <View style={styles.container}>
-        <FlatList
-            data={meals}
-            keyExtractor={(meal) => meal.id}
-            renderItem={({item}) => {
-                let mealPointers = {
-                    affordability : item.affordability,
-                    complexity: item.complexity,
-                    duration: item.duration
-                }
-                return <Card
-                onPress={() => navigation.navigate('DishDetails', {mId: item.id, mealDeatils: item})}
-                mealName={item.title}
-                mealImage={item.imageUrl}
-                mealPointers={mealPointers}
-                />
-            }}
-        />
-    </View>
+    <MealList data={meals}/>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
+    
 })
 
 export default DishesScreen
